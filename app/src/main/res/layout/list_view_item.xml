@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/medical_name"
+        android:id="@+id/medicine_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MED : " />
@@ -13,6 +13,6 @@
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/medical_name" />
+        android:layout_toRightOf="@+id/medicine_name" />
 
 </LinearLayout>
