@@ -10,7 +10,7 @@
         android:text="MED : " />
 
     <TextView
-        android:id="@+id/location"
+        android:id="@+id/medicine_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/medicine_name" />
