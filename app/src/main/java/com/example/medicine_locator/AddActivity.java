@@ -1,6 +1,7 @@
 package com.example.medicine_locator;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 import com.example.medicine_locator.data.Medicine;

@@ -15,9 +15,7 @@ import com.example.medicine_locator.data.MedicineDatabase_Impl;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-
     private Button search_button, add_button, edit_button, delete_button;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivitySearch();
+                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                startActivity(intent);
             }
         });
 

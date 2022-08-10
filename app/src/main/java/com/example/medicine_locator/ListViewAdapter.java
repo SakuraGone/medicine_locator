@@ -52,7 +52,7 @@ public class ListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
         final ViewHolder holder;
-        if(view == null) {
+        if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.list_view_item, null);
             // Locate the TextViews in listview_item.xml
