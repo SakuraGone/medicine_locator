@@ -6,15 +6,23 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Medicine {
     @PrimaryKey(autoGenerate = true)
+    private int medicineId;
+
     //medicine basic information
     private String medicineName;
     private String medicineLocation;
-    private int dum;
+
+    public Medicine() {
+        this.medicineName = "";
+        this.medicineLocation = "";
+    }
 
     public Medicine(String name, String location) {
         this.medicineName = name;
         this.medicineLocation = location;
     }
+
+    public int getMedicineId() { return this.medicineId; }
 
     public String getMedicineName() {
         return this.medicineName;
@@ -23,6 +31,8 @@ public class Medicine {
     public String getMedicineLocation() {
         return this.medicineLocation;
     }
+
+    public void setMedicineId(int id) { this.medicineId = id; }
 
     public void setMedicineName(String name) {
         this.medicineName = name;
