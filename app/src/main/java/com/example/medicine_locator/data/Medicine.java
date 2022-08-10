@@ -1,5 +1,6 @@
 package com.example.medicine_locator.data;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -9,7 +10,9 @@ public class Medicine {
     private int medicineId;
 
     //medicine basic information
+    @ColumnInfo(name = "medicine_name")
     private String medicineName;
+    @ColumnInfo(name = "medicine_location")
     private String medicineLocation;
 
     public Medicine() {

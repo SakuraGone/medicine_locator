@@ -7,8 +7,12 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.example.medicine_locator.data.Medicine;
+import com.example.medicine_locator.data.MedicineDao;
+import com.example.medicine_locator.data.MedicineDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -22,10 +26,20 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     String[] medLocationList;
     ArrayList<Medicine> arraylist = new ArrayList<Medicine>();
 
+    // Create instance of dao to make changes on database
+    MedicineDao medicineDao;
+    Medicine[] medicines;
+    HashMap<String, String> med;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        // Connect to database
+        medicineDao = MedicineDatabase.getDBInstance(getApplicationContext()).medicineDao();
+        List<Medicine> medicines = medicineDao.getAllMedicines();
+        System.out.println(medicines.size());
 
         medNameList = new String[]{"感冒灵", "布洛芬"};
         medLocationList = new String[]{"1楼2行3列", "2楼3行1列"};

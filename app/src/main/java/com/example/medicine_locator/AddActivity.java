@@ -23,7 +23,7 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
 
         // Connect to database
-        medicineDao = MedicineDatabase.getDBInstance(getApplicationContext()).medicineDaoDao();
+        medicineDao = MedicineDatabase.getDBInstance(getApplicationContext()).medicineDao();
         medicine = new Medicine();
 
     }

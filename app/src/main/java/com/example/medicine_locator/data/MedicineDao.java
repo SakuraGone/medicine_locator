@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.List;
+
 @Dao
 public interface MedicineDao {
     @Insert
@@ -17,6 +19,10 @@ public interface MedicineDao {
     @Update
     void update(Medicine medicine);
 
-    @Query("DELETE FROM Medicine")
+    @Query("DELETE FROM medicine")
     void deleteAllRecord();
+
+    @Query("SELECT * FROM medicine")
+    List<Medicine> getAllMedicines();
+
 }

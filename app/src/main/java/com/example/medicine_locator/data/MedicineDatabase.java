@@ -6,9 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = Medicine.class, version = 1)
+@Database(entities = {Medicine.class}, version = 1)
 public abstract class MedicineDatabase extends RoomDatabase{
-    public abstract MedicineDao medicineDaoDao();
+    public abstract MedicineDao medicineDao();
 
     private static MedicineDatabase medicineDatabase_db;
 

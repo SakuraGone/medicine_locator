@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "087a683d60e4b25ad6eb281018f67ae6",
+    "identityHash": "d985f911dec4c0ccbd520ad977b91ba6",
     "entities": [
       {
         "tableName": "Medicine",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medicineId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `medicineName` TEXT, `medicineLocation` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medicineId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `medicine_name` TEXT, `medicine_location` TEXT)",
         "fields": [
           {
             "fieldPath": "medicineId",
@@ -16,13 +16,13 @@
           },
           {
             "fieldPath": "medicineName",
-            "columnName": "medicineName",
+            "columnName": "medicine_name",
             "affinity": "TEXT",
             "notNull": false
           },
           {
             "fieldPath": "medicineLocation",
-            "columnName": "medicineLocation",
+            "columnName": "medicine_location",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -40,7 +40,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '087a683d60e4b25ad6eb281018f67ae6')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd985f911dec4c0ccbd520ad977b91ba6')"
     ]
   }
 }
