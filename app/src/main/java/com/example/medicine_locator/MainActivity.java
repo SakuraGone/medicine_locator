@@ -1,11 +1,13 @@
 package com.example.medicine_locator;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.medicine_locator.data.Medicine;
 import com.example.medicine_locator.data.MedicineDao;
@@ -14,6 +16,12 @@ import com.example.medicine_locator.data.MedicineDatabase;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+    private EditText newMedicine_name, newMedicine_location;
+    private Button save_button, cancel_button;
+
     private Button search_button, add_button, edit_button, delete_button;
     // Create instance of dao to make changes on database
     MedicineDao medicineDao;
@@ -70,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivitySearch() {
         //todo
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View addPopupView = getLayoutInflater().inflate(R.layout.activity_add, null);
+
     }
+
 
 }
