@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.medicine_locator.data.Medicine;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText medNameEditText, medLocationEditText;
     private Button save_button, cancel_button;
 
-    private Button search_button, add_button, edit_button, delete_button;
+    private ImageButton search_button, add_button, edit_button, delete_button;
     // Create instance of dao to make changes on database
     MedicineDao medicineDao;
     Medicine medicine;
@@ -37,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         // Check data base size
         medicineDao = MedicineDatabase.getDBInstance(getApplicationContext()).medicineDao();
         List<Medicine> medicines = medicineDao.getAllMedicines();
-        System.out.println(medicines.size());
+        System.out.println("size:==========" + medicines.size());
 
-        search_button = (Button) findViewById(R.id.search_button);
-        add_button = (Button) findViewById(R.id.add_button);
-        edit_button = (Button) findViewById(R.id.edit_button);
-        delete_button = (Button) findViewById(R.id.delete_button);
+        search_button = (ImageButton) findViewById(R.id.search_button);
+        add_button = (ImageButton) findViewById(R.id.add_button);
+        edit_button = (ImageButton) findViewById(R.id.edit_button);
+        delete_button = (ImageButton) findViewById(R.id.delete_button);
 
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createNewMedicineRecord();
+                TODO();
             }
         });
 
@@ -72,10 +73,14 @@ public class MainActivity extends AppCompatActivity {
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createNewMedicineRecord();
+                TODO();
             }
         });
 
+    }
+
+    public void TODO() {
+        Toast.makeText(getApplicationContext(), "未开发", Toast.LENGTH_SHORT).show();
     }
 
     public void createNewMedicineRecord() {
