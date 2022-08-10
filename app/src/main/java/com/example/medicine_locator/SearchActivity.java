@@ -11,25 +11,20 @@ import com.example.medicine_locator.data.MedicineDao;
 import com.example.medicine_locator.data.MedicineDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     // Declare Variables
     ListView list;
     ListViewAdapter adapter;
-    SearchView editsearch;
-    Map<String, String> map;
+    SearchView editSearch;
     String[] medNameList;
     String[] medLocationList;
-    ArrayList<Medicine> arraylist = new ArrayList<Medicine>();
+    ArrayList<Medicine> arraylist = new ArrayList<>();
 
     // Create instance of dao to make changes on database
     MedicineDao medicineDao;
-    Medicine[] medicines;
-    HashMap<String, String> med;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +34,19 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         // Connect to database
         medicineDao = MedicineDatabase.getDBInstance(getApplicationContext()).medicineDao();
         List<Medicine> medicines = medicineDao.getAllMedicines();
-        System.out.println(medicines.size());
 
-        medNameList = new String[]{"感冒灵", "布洛芬"};
-        medLocationList = new String[]{"1楼2行3列", "2楼3行1列"};
+        int n = medicines.size();
+        medNameList = new String[n];
+        medLocationList = new String[n];
+        for (int i=0;i<n;i++) {
+            medNameList[i] = medicines.get(i).getMedicineName();
+            medLocationList[i] = medicines.get(i).getMedicineLocation();
+        }
 
         // Locate the ListView in listview_main.xml
-        list = (ListView) findViewById(R.id.listview);
+        list = findViewById(R.id.listview);
 
-        for (int i = 0; i < medNameList.length; i++) {
+        for (int i = 0; i < n; i++) {
             Medicine med = new Medicine(medNameList[i], medLocationList[i]);
             // Binds all strings into an array
             arraylist.add(med);
@@ -60,8 +59,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         list.setAdapter(adapter);
 
         // Locate the EditText in listview_main.xml
-        editsearch = (SearchView) findViewById(R.id.search);
-        editsearch.setOnQueryTextListener(this);
+        editSearch = findViewById(R.id.search);
+        editSearch.setOnQueryTextListener(this);
 
     }
 
@@ -72,8 +71,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        String text = newText;
-        adapter.filter(text);
+        adapter.filter(newText);
         return false;
     }
 }

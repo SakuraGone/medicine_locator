@@ -30,7 +30,7 @@ public class ListViewAdapter extends BaseAdapter {
         mContext = context;
         this.medicineList = medicineList;
         inflater = LayoutInflater.from(mContext);
-        this.arrayList = new ArrayList<Medicine>();
+        this.arrayList = new ArrayList<>();
         this.arrayList.addAll(medicineList);
     }
 
@@ -56,8 +56,8 @@ public class ListViewAdapter extends BaseAdapter {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.list_view_item, null);
             // Locate the TextViews in listview_item.xml
-            holder.name = (TextView) view.findViewById(R.id.medicine_name);
-            holder.location = (TextView) view.findViewById(R.id.medicine_location);
+            holder.name = view.findViewById(R.id.medicine_name);
+            holder.location = view.findViewById(R.id.medicine_location);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
