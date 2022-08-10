@@ -3,6 +3,8 @@ package com.example.medicine_locator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.medicine_locator.data.Medicine;
 import com.example.medicine_locator.data.MedicineDao;
@@ -16,6 +18,9 @@ public class AddActivity extends AppCompatActivity {
     MedicineDao medicineDao;
     Medicine medicine;
     HashMap<String, String> med;
+
+    private EditText name_input, location_input;
+    private Button cancel_btn, submit_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
