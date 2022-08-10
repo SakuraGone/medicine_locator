@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(entities = Medicine.class, version = 1)
-abstract class MedicineDatabase extends RoomDatabase{
+public abstract class MedicineDatabase extends RoomDatabase{
     public abstract MedicineDao medicineDaoDao();
 
     private static MedicineDatabase medicineDatabase_db;
