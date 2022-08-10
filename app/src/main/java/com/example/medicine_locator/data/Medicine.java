@@ -1,4 +1,4 @@
-package com.example.medicine_locator;
+package com.example.medicine_locator.data;
 
 public class Medicine {
     //medicine basic information

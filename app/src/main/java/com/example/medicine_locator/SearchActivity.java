@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.example.medicine_locator.data.Medicine;
+
 import java.util.ArrayList;
 import java.util.Map;
 
