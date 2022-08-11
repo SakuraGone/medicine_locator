@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText medNameEditText, medLocationEditText;
     private Button save_button, cancel_button;
 
-    private ImageButton search_button, add_button, edit_button, delete_button;
+    private ImageButton search_button, add_button, edit_button;
     // Create instance of dao to make changes on database
     MedicineDao medicineDao;
     Medicine medicine;
@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         search_button = findViewById(R.id.search_button);
         add_button = findViewById(R.id.add_button);
         edit_button = findViewById(R.id.edit_button);
-        delete_button = findViewById(R.id.delete_button);
 
         search_button.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
@@ -51,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         edit_button.setOnClickListener(view -> TODO());
-
-
-        delete_button.setOnClickListener(view -> TODO());
 
     }
 
