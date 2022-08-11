@@ -2,7 +2,11 @@ package com.example.medicine_locator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -19,8 +23,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     ListView list;
     ListViewAdapter adapter;
     SearchView editSearch;
-    String[] medNameList;
-    String[] medLocationList;
+    List<Medicine> medicines;
     ArrayList<Medicine> arraylist = new ArrayList<>();
 
     // Create instance of dao to make changes on database
@@ -33,23 +36,14 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
 
         // Connect to database
         medicineDao = MedicineDatabase.getDBInstance(getApplicationContext()).medicineDao();
-        List<Medicine> medicines = medicineDao.getAllMedicines();
-
-        int n = medicines.size();
-        medNameList = new String[n];
-        medLocationList = new String[n];
-        for (int i=0;i<n;i++) {
-            medNameList[i] = medicines.get(i).getMedicineName();
-            medLocationList[i] = medicines.get(i).getMedicineLocation();
-        }
+        medicines = medicineDao.getAllMedicines();
 
         // Locate the ListView in listview_main.xml
         list = findViewById(R.id.listview);
 
-        for (int i = 0; i < n; i++) {
-            Medicine med = new Medicine(medNameList[i], medLocationList[i]);
+        for (int i = 0; i < medicines.size(); i++) {
             // Binds all strings into an array
-            arraylist.add(med);
+            arraylist.add(medicines.get(i));
         }
 
         // Pass results to ListViewAdapter Class
@@ -57,6 +51,25 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
 
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                AlertDialog.Builder adb=new AlertDialog.Builder(SearchActivity.this);
+                adb.setTitle("Delete?");
+                adb.setMessage("Are you sure you want to delete " + position);
+                final int positionToRemove = position;
+                adb.setNegativeButton("Cancel", null);
+                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        medicineDao.delete(medicines.get(position));
+                        arraylist.remove(medicines.get(position));
+                        System.out.println("===========================" + position);
+                        adapter.notifyDataSetChanged();
+                    }});
+                adb.show();
+            }
+        });
 
         // Locate the EditText in listview_main.xml
         editSearch = findViewById(R.id.search);
