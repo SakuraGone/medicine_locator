@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.DragEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.example.medicine_locator.data.Medicine;
 import com.example.medicine_locator.data.MedicineDao;
@@ -54,9 +52,9 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
                 AlertDialog.Builder adb=new AlertDialog.Builder(SearchActivity.this);
                 adb.setTitle("删除数据");
                 adb.setMessage("确定要删除[" + medicines.get(position).getMedicineName() + "]的数据吗?");
@@ -69,6 +67,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
                         adapter.notifyDataSetChanged();
                     }});
                 adb.show();
+                return false;
             }
         });
 
