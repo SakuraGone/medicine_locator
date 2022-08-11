@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.medicine_locator.data.Medicine;
 import com.example.medicine_locator.data.MedicineDao;
@@ -56,15 +58,14 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 AlertDialog.Builder adb=new AlertDialog.Builder(SearchActivity.this);
-                adb.setTitle("Delete?");
-                adb.setMessage("Are you sure you want to delete " + position);
+                adb.setTitle("删除数据");
+                adb.setMessage("确定要删除[" + medicines.get(position).getMedicineName() + "]的数据吗?");
                 final int positionToRemove = position;
-                adb.setNegativeButton("Cancel", null);
-                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                adb.setNegativeButton("取消", null);
+                adb.setPositiveButton("确定", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         medicineDao.delete(medicines.get(position));
                         arraylist.remove(medicines.get(position));
-                        System.out.println("===========================" + position);
                         adapter.notifyDataSetChanged();
                     }});
                 adb.show();

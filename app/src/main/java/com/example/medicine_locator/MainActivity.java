@@ -38,18 +38,16 @@ public class MainActivity extends AppCompatActivity {
 
         search_button = findViewById(R.id.search_button);
         add_button = findViewById(R.id.add_button);
-        edit_button = findViewById(R.id.edit_button);
+//        edit_button = findViewById(R.id.edit_button);
 
         search_button.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
             startActivity(intent);
         });
 
-
         add_button.setOnClickListener(view -> createNewMedicineRecord());
 
-
-        edit_button.setOnClickListener(view -> TODO());
+//        edit_button.setOnClickListener(view -> TODO());
 
     }
 
